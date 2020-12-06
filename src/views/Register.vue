@@ -93,10 +93,10 @@
   </div>
 </template>
 
-
 <script>
+import { Toast } from 'mint-ui'
 export default {
-  data() {
+  data () {
     return {
       options: [
         {
@@ -125,24 +125,29 @@ export default {
         subject: '',
         job_img: '',
         role: '1',
-        status: 0,
+        status: 0
       }
     }
   },
   methods: {
-    register() {
+    register () {
+      if (this.form.password !== this.repassword) {
+        Toast({
+          message: '两次密码输入的不一致，请重新输入',
+          position: 'middle',
+          duration: 3000
+        })
+      }
+    },
+    handleAvatarSuccess () {
 
     },
-    handleAvatarSuccess() {
-
-    },
-    beforeAvatarUpload() {
+    beforeAvatarUpload () {
 
     }
   }
 }
 </script>
-
 
 <style scoped>
 .register {
